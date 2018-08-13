@@ -1,0 +1,879 @@
+openapi: 3.0.0
+info:
+  description: "Warranty life api definition for openapi 3.0.0 from here we generate api's"
+  version: "1.0.1"
+  title: "Warranty Life"
+  termsOfService: "http://swagger.io/terms/"
+  contact:
+    email: "jeff.durand@gmail.com"
+  license:
+    name: "Apache 2.0"
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+tags:
+- name: "categories"
+  description: "Device categories and sub-categories"
+  externalDocs:
+    description: "Find out more"
+    url: "https://www.warrantylife.com/developer/documentation#categories"
+- name: "warranty-plans"
+  description: "Plans that a person can puchase for a device"
+  externalDocs:
+    description: "Find out more"
+    url: "https://www.warrantylife.com/developer/documentation#plans"
+- name: "customer"
+  description: "Unique individual purchasing the warranty"
+  externalDocs:
+    description: "Find out more"
+    url: "https://www.warrantylife.com/developer/documentation#customers"
+- name: "manufacturers"
+  description: "Manufacterer of product"
+  externalDocs:
+    description: "Find out more"
+    url: "https://www.warrantylife.com/developer/documentation#manufacturers"
+- name: "products"
+  description: "product from sellers catalog"
+  externalDocs:
+    description: "Find out more"
+    url: "https://www.warrantylife.com/developer/documentation#products"
+- name: "items"
+  description: "item sold links product with category with price of actual item"
+  externalDocs:
+    description: "Find out more"
+    url: "https://www.warrantylife.com/developer/documentation#items"
+- name: "warranties"
+  description: "actual issued warranties"
+  externalDocs:
+    description: "Find out more"
+    url: "https://www.warrantylife.com/developer/documentation#warranties"
+components:
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+  schemas:
+    Category:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        name: 
+          type: string
+          readOnly: true
+        subCategoryIds:
+          type: array
+          readOnly: true
+          items:
+            type: integer
+        parentCategoryId:
+          type: integer
+          
+    WarrantyPlan:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        applicableCategoryIds:
+          type: array
+          items:
+            type: string
+        applicableProductFlags:
+          type: array
+          items:
+            type: string
+        name:
+          type: string
+        description: 
+          type: string
+        productMinPrice: 
+          type: number 
+          format: double
+        duration:
+          type: integer
+        durationUnit:
+          type: string
+          enum: [days, months, years]
+        isDurationFixed:
+          type: boolean
+        partsDuration:
+          type: integer
+        partsDurationUnit: 
+          type: string
+          enum: [days, months, years]
+        labourDuration:
+          type: integer
+        labourDurationUnit: 
+          type: string
+          enum: [days, months, years]
+        rmaShippingCoverage:
+          type: integer
+          enum: [0, 1, 2]
+        serviceLocation:
+          type: string
+        claimPhone:
+          type: string
+        planAvailableFrom: 
+          type: string
+          format: date-time
+        planAvailableTo: 
+          type: string
+          format: date-time
+        sellableDuration:
+          type: integer
+        sellableDurationUnit: 
+          type: string
+          enum: [days, months, years]
+        srp:
+          type: number
+          format: double
+        wholesaleCost: 
+          type: number
+          format: double
+        retailerCost:
+          type: number
+          format: double
+        retailPrice: 
+          type: number
+          format: double
+        currencyCode: 
+          type: string
+          enum: [USD, CAD]
+        billingPeriod:
+          type: integer
+        billingPeriodUnit: 
+          type: string
+          enum: [days, months, years]
+        countryCode:
+          type: string
+          enum: [US, CA, IN, BD, PH, AU]
+        termsUrl: 
+          type: string
+          format: uri
+        updatedAt: 
+          type: string
+          format: date-time
+          
+    Customer:
+      type: object
+      properties:
+        id: 
+          type: string
+          readOnly: true
+        refId:
+          type: string
+        orderRefId:
+          type: string
+        customerUrl:
+          type: string
+          readOnly: true
+        salesRepEmail:
+          type: string
+        emailAddress:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        companyName:
+          type: string
+        streetAddress:
+          type: string
+        city:
+          type: string
+        state:
+          type: string
+        postalCode:
+          type: string
+        phone:
+          type: string
+        country:
+          type: string
+          enum: [US, CA, IN, BD, PH, AU]
+        isWalkIn:
+          type: boolean
+        optIn:
+          type: boolean
+      required:
+        - firstName
+        - streetAddress
+        - city
+        - state
+        - postalCode
+        - phone
+        - country
+        
+    Manufacturer:
+      type: object
+      properties:
+        id:
+          type: string
+          readOnly: true
+        name:
+          type: string
+      required:
+        - name
+        
+    Product:
+      type: object
+      properties:
+        id:
+          type: string
+          readOnly: true
+        categoryId:
+          type: string
+        isCategoryKnown:
+          type: boolean
+        manufacturer:
+          $ref: '#/components/schemas/Manufacturer'
+        manufacturerId:
+          type: string
+        mpn:
+          type: string
+        model:
+          type: string
+        msrp:
+          type: number
+          format: double
+        msrpCurrency:
+          type: string
+          enum: [USD, CAD]
+        upc:
+          type: string
+        ean:
+          type: string
+        estimatedValue:
+          type: string
+        buybackOffer:
+          type: string
+        flags:
+          type: array
+          items:
+            type: string
+      required:
+        - categoryId
+        - manufacturerId
+        - model
+        
+    Item:
+      type: object
+      properties:
+        id:
+          type: string
+          readOnly: true
+        refId:
+          type: string
+        orderRefId:
+          type: string
+        customerId:
+          type: string
+        dateOfPurchase:
+          type: string
+          format: date-time
+        productId:
+          type: string
+        productSku:
+          type: string
+        purchasedCondition:
+          type: string
+          enum: [NEW, USED, REFURBISHED]
+        contractYears:
+          type: string
+        pricePaid:
+          type: number
+          format: double
+        pricePaidCurrencyCode:
+          type: string
+          enum: [USD, CAD]
+        taxPaid:
+          type: number
+          format: double
+        shippingPaid:
+          type: number
+          format: double
+        serialNumber:
+          type: string
+        serialNumberType:
+          type: string
+          enum: [ESN, IMEI, MEID]
+        isRepaired:
+          type: boolean
+        hasDamage:
+          type: boolean
+        categoryId:
+          type: string
+          
+    Warranty:   
+      type: object
+      properties:
+        id:
+          type: string
+          readOnly: true
+        refId:
+          type: string
+        registrationCode:
+          type: string
+        warrantyUrl:
+          type: string
+          readOnly: true
+        orderRefId:
+          type: string
+        warrantyPlanId:
+          type: string
+        itemId:
+          type: string
+        customerId:
+          type: string
+        dateOfPurchase:
+          type: string
+          format: date-time
+        pricePaid:
+          type: number
+          format: double
+        pricePaidCurrencyCode:
+          type: string
+          enum: [USD, CAD]
+        taxPaid:
+          type: number
+          format: double
+      required:
+        - itemId
+        - warrantyPlanId
+        - customerId
+               
+security:
+  - basicAuth: []
+servers: 
+  - url: "https://sandbox.warrantylife.com/api/201308"
+    description: "sandbox api for warranty life api"
+  - url: 'https://www.warrantylife.com/api/201308'
+    description: "production api for warranty life api"
+paths:
+  /categories:
+    get:
+      tags: 
+        - "categories"
+      summary: "List of all categories"
+      description: "device categories"
+      security: 
+        - basicAuth: []
+      responses:
+        '200':    # status code
+          description: A JSON array catgoriesa
+          content:
+            application/json:
+              schema: 
+                type: array
+                items: 
+                  $ref: "#/components/schemas/Category"
+  '/categories/{categoryId}':
+    get:
+      parameters:
+        - name: categoryId
+          in: path
+          required: true
+          description: "Id for the category you would like to retrieve"
+          schema:
+            type: string
+      tags: 
+        - "categories"
+      security: 
+        - basicAuth: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Category"
+                
+  '/warranty-plans':
+    get:
+      parameters:
+        - name: categoryId
+          in: query
+          required: false
+          description: "Id for the category you would like to retrieve"
+          schema:
+            type: string
+      tags:
+        - warranty-plans
+      security:
+        - basicAuth: []
+      responses:
+        '200':    # status code
+          description: OK
+          content:
+            application/json:
+              schema: 
+                type: array
+                items: 
+                  $ref: "#/components/schemas/WarrantyPlan"
+  '/warranty-plans/{warrantyPlanId}':
+    get:
+      parameters:
+        - name: warrantyPlanId
+          in: path
+          required: true
+          description: "Id for the warranty-plan you want to retrieve"
+          schema:
+            type: string
+      tags:
+        - warranty-plans
+      security:
+        - basicAuth: []
+      responses:
+        '200':    # status code
+          description: OK
+          content:
+            application/json:
+              schema: 
+                type: array
+                items: 
+                  $ref: "#/components/schemas/WarrantyPlan"
+  
+  '/customers':
+    post:
+      tags: 
+        - "customer"
+      summary: "Add a new customer"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Customer'
+      responses:
+        '201':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Customer'
+          headers:
+            Location:
+              schema:
+                type: string
+              description: location of created customer
+        '403':
+          description: FORBIDDEN
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                  message:
+                    type: string
+    get:
+      tags: 
+        - customer
+      summary: "get a customer by refId"
+      parameters: 
+        - name: refId
+          in: query
+          required: false
+          description: "ref customer to your local database"
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "OK"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Customer'
+                
+  '/customers/{customerId}':
+    get:
+      tags: 
+        - customer
+      summary: "get customer by customer id"
+      parameters:
+        - name: customerId
+          in: path
+          required: true
+          description: "Id for the warranty-plan you want to retrieve"
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "OK"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Customer'
+  
+  '/manufacturers/{manufacturerId}':
+    get:
+      tags:
+        - manufacturers
+      summary: "specific manufacturer from warranty life id"
+      parameters: 
+        - name: manufacturerId
+          in: path
+          required: true
+          description: "Id for the manufacterer"
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "OK"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Manufacturer'
+  
+  '/manufacturers':
+    get:
+      tags: 
+        - manufacturers
+      summary: "get list of manufacturers"
+      parameters: 
+        - name: name
+          in: query
+          schema:
+            type: string
+        - name: startAt
+          in: query
+          schema:
+            type: string
+        - name: limit
+          in: query
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: "OK"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Manufacturer'
+                  
+    post:
+      tags: 
+        - manufacturers
+      summary: "create new manufacturer"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Manufacturer'
+      responses:
+        '201':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Manufacturer'
+          headers:
+            Location:
+              schema:
+                type: string
+              description: location of created manufacturer
+        '403':
+          description: FORBIDDEN
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                  message:
+                    type: string
+  
+  '/products/{productId}':
+    get:
+      tags:
+        - products
+      summary: "get a single product by id"
+      parameters: 
+        - name: productId
+          in: path
+          required: true
+          description: "Id for the product"
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "OK"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Product'
+                
+  '/products':
+    get:
+      tags: 
+        - products
+      summary: "get a list of products"
+      parameters: 
+        - name: sku
+          in: query
+          description: "previously specified sku for product"
+          schema:
+            type: string
+        - name: q
+          in: query
+          description: "full text search style query"
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "OK"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Product'
+    post:
+      tags: 
+        - products
+      summary: "create new product"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Product'
+      responses:
+        '201':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Product'
+          headers:
+            Location:
+              schema:
+                type: string
+              description: location of created product
+        '403':
+          description: FORBIDDEN
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                  message:
+                    type: string
+                
+  '/items/{itemId}':
+    get:
+      tags: 
+        - items
+      summary: "get an item"
+      parameters: 
+        - name: itemId
+          in: path
+          required: true
+          description: "Id for the product"
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "OK"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Item'
+                
+  '/items/{itemId}/warranties':
+    post:
+      tags:
+        - warranties
+        - items
+      summary: "create warranty"
+      parameters: 
+        - name: itemId
+          in: path
+          required: true
+          description: "Id for the product"
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Warranty'
+      responses:
+        '201':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Warranty'
+          headers:
+            Location:
+              schema:
+                type: string
+              description: location of created warranty
+        '403':
+          description: FORBIDDEN
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                  message:
+                    type: string
+                    
+  '/items':
+    get:
+      tags: 
+        - items
+      summary: "get an item"
+      parameters: 
+        - name: refId
+          in: query
+          description: "previously specified refId for product"
+          schema:
+            type: string
+        - name: orderRefId
+          in: query
+          description: "order reference id"
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "OK"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Item'
+    post:
+      tags: 
+        - items
+      summary: "create new item"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Item'
+      responses:
+        '201':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Item'
+          headers:
+            Location:
+              schema:
+                type: string
+              description: location of created item
+        '403':
+          description: FORBIDDEN
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                  message:
+                    type: string
+  "/warranties":
+    post:
+      tags:
+        - warranties
+      summary: "create warranty"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Warranty'
+      responses:
+        '201':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Warranty'
+          headers:
+            Location:
+              schema:
+                type: string
+              description: location of created warranty
+        '403':
+          description: FORBIDDEN
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                  message:
+                    type: string
+    get:
+      tags:
+        - warranties
+      summary: "get warranty by query params"
+      parameters: 
+        - name: refId
+          in: query
+          description: "previously specified refId for product"
+          schema:
+            type: string
+        - name: orderRefId
+          in: query
+          description: "order reference id"
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "OK"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Warranty'
+                    
+  "/warranties/{warrantyId}":
+    get:
+      tags: 
+        - warranties
+      summary: "get an item"
+      parameters: 
+        - name: warrantyId
+          in: path
+          required: true
+          description: "previously specified warrantyId for warranty"
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "OK"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Warranty'
+    delete:
+      tags: 
+        - warranties
+      summary: "delete an item"
+      parameters: 
+        - name: warrantyId
+          in: path
+          required: true
+          description: "previously specified warrantyId for warranty"
+          schema:
+            type: string
+      responses:
+        '204':
+          description: "OK"
