@@ -25,7 +25,7 @@ npm install warranty_life --save
 
 ##### Local development
 
-To use the library locally without publishing to a remote npm registry, first install the dependencies by changing 
+To use the library locally without publishing to a remote npm registry, first install the dependencies by changing
 into the directory containing `package.json` (and this README). Let's call this `JAVASCRIPT_CLIENT_DIR`. Then run:
 
 ```shell
@@ -44,7 +44,7 @@ Finally, switch to the directory you want to use your warranty_life from, and ru
 npm link /path/to/<JAVASCRIPT_CLIENT_DIR>
 ```
 
-You should now be able to `require('warranty_life')` in javascript files from the directory you ran the last 
+You should now be able to `require('warranty_life')` in javascript files from the directory you ran the last
 command above from.
 
 #### git
@@ -61,7 +61,7 @@ then install it via:
 
 The library also works in the browser environment via npm and [browserify](http://browserify.org/). After following
 the above steps with Node.js and installing browserify with `npm install -g browserify`,
-perform the following (assuming *main.js* is your entry file, that's to say your javascript file where you actually 
+perform the following (assuming *main.js* is your entry file, that's to say your javascript file where you actually
 use this library):
 
 ```shell
@@ -122,7 +122,7 @@ All URIs are relative to *https://sandbox.warrantylife.com/api/201308*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*WarrantyLife.CategoriesApi* | [**categoriesCategoryIdGet**](docs/CategoriesApi.md#categoriesCategoryIdGet) | **GET** /categories/{categoryId} | 
+*WarrantyLife.CategoriesApi* | [**categoriesCategoryIdGet**](docs/CategoriesApi.md#categoriesCategoryIdGet) | **GET** /categories/{categoryId} |
 *WarrantyLife.CategoriesApi* | [**categoriesGet**](docs/CategoriesApi.md#categoriesGet) | **GET** /categories | List of all categories
 *WarrantyLife.CustomerApi* | [**customersCustomerIdGet**](docs/CustomerApi.md#customersCustomerIdGet) | **GET** /customers/{customerId} | get customer by customer id
 *WarrantyLife.CustomerApi* | [**customersGet**](docs/CustomerApi.md#customersGet) | **GET** /customers | get a customer by refId
@@ -144,8 +144,8 @@ Class | Method | HTTP request | Description
 *WarrantyLife.WarrantiesApi* | [**warrantiesPost**](docs/WarrantiesApi.md#warrantiesPost) | **POST** /warranties | create warranty
 *WarrantyLife.WarrantiesApi* | [**warrantiesWarrantyIdDelete**](docs/WarrantiesApi.md#warrantiesWarrantyIdDelete) | **DELETE** /warranties/{warrantyId} | delete an item
 *WarrantyLife.WarrantiesApi* | [**warrantiesWarrantyIdGet**](docs/WarrantiesApi.md#warrantiesWarrantyIdGet) | **GET** /warranties/{warrantyId} | get an item
-*WarrantyLife.WarrantyPlansApi* | [**warrantyPlansGet**](docs/WarrantyPlansApi.md#warrantyPlansGet) | **GET** /warranty-plans | 
-*WarrantyLife.WarrantyPlansApi* | [**warrantyPlansWarrantyPlanIdGet**](docs/WarrantyPlansApi.md#warrantyPlansWarrantyPlanIdGet) | **GET** /warranty-plans/{warrantyPlanId} | 
+*WarrantyLife.WarrantyPlansApi* | [**warrantyPlansGet**](docs/WarrantyPlansApi.md#warrantyPlansGet) | **GET** /warranty-plans |
+*WarrantyLife.WarrantyPlansApi* | [**warrantyPlansWarrantyPlanIdGet**](docs/WarrantyPlansApi.md#warrantyPlansWarrantyPlanIdGet) | **GET** /warranty-plans/{warrantyPlanId} |
 
 
 ## Documentation for Models
