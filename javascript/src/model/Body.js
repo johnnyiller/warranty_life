@@ -26,7 +26,7 @@
     if (!root.WarrantyLife) {
       root.WarrantyLife = {};
     }
-    root.WarrantyLife.Category = factory(root.WarrantyLife.ApiClient);
+    root.WarrantyLife.Body = factory(root.WarrantyLife.ApiClient);
   }
 }(this, function(ApiClient) {
   'use strict';
@@ -35,14 +35,14 @@
 
 
   /**
-   * The Category model module.
-   * @module model/Category
+   * The Body model module.
+   * @module model/Body
    * @version 1.0.2
    */
 
   /**
-   * Constructs a new <code>Category</code>.
-   * @alias module:model/Category
+   * Constructs a new <code>Body</code>.
+   * @alias module:model/Body
    * @class
    */
   var exports = function() {
@@ -51,52 +51,44 @@
 
 
 
-
   };
 
   /**
-   * Constructs a <code>Category</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>Body</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/Category} obj Optional instance to populate.
-   * @return {module:model/Category} The populated <code>Category</code> instance.
+   * @param {module:model/Body} obj Optional instance to populate.
+   * @return {module:model/Body} The populated <code>Body</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('id')) {
-        obj['id'] = ApiClient.convertToType(data['id'], 'Number');
+      if (data.hasOwnProperty('orderRefId')) {
+        obj['orderRefId'] = ApiClient.convertToType(data['orderRefId'], 'String');
       }
-      if (data.hasOwnProperty('name')) {
-        obj['name'] = ApiClient.convertToType(data['name'], 'String');
+      if (data.hasOwnProperty('refId')) {
+        obj['refId'] = ApiClient.convertToType(data['refId'], 'String');
       }
-      if (data.hasOwnProperty('subCategoryIds')) {
-        obj['subCategoryIds'] = ApiClient.convertToType(data['subCategoryIds'], ['Number']);
-      }
-      if (data.hasOwnProperty('parentCategoryId')) {
-        obj['parentCategoryId'] = ApiClient.convertToType(data['parentCategoryId'], 'Number');
+      if (data.hasOwnProperty('dateOfPurchase')) {
+        obj['dateOfPurchase'] = ApiClient.convertToType(data['dateOfPurchase'], 'Date');
       }
     }
     return obj;
   }
 
   /**
-   * @member {Number} id
+   * @member {String} orderRefId
    */
-  exports.prototype['id'] = undefined;
+  exports.prototype['orderRefId'] = undefined;
   /**
-   * @member {String} name
+   * @member {String} refId
    */
-  exports.prototype['name'] = undefined;
+  exports.prototype['refId'] = undefined;
   /**
-   * @member {Array.<Number>} subCategoryIds
+   * @member {Date} dateOfPurchase
    */
-  exports.prototype['subCategoryIds'] = undefined;
-  /**
-   * @member {Number} parentCategoryId
-   */
-  exports.prototype['parentCategoryId'] = undefined;
+  exports.prototype['dateOfPurchase'] = undefined;
 
 
 

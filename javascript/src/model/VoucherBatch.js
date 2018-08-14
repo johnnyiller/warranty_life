@@ -26,7 +26,7 @@
     if (!root.WarrantyLife) {
       root.WarrantyLife = {};
     }
-    root.WarrantyLife.Manufacturer = factory(root.WarrantyLife.ApiClient);
+    root.WarrantyLife.VoucherBatch = factory(root.WarrantyLife.ApiClient);
   }
 }(this, function(ApiClient) {
   'use strict';
@@ -35,30 +35,34 @@
 
 
   /**
-   * The Manufacturer model module.
-   * @module model/Manufacturer
+   * The VoucherBatch model module.
+   * @module model/VoucherBatch
    * @version 1.0.2
    */
 
   /**
-   * Constructs a new <code>Manufacturer</code>.
-   * @alias module:model/Manufacturer
+   * Constructs a new <code>VoucherBatch</code>.
+   * @alias module:model/VoucherBatch
    * @class
-   * @param name {String} 
+   * @param qty {Number} 
+   * @param warrantyPlanId {String} 
    */
-  var exports = function(name) {
+  var exports = function(qty, warrantyPlanId) {
     var _this = this;
 
 
-    _this['name'] = name;
+    _this['qty'] = qty;
+    _this['warrantyPlanId'] = warrantyPlanId;
+
+
   };
 
   /**
-   * Constructs a <code>Manufacturer</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>VoucherBatch</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/Manufacturer} obj Optional instance to populate.
-   * @return {module:model/Manufacturer} The populated <code>Manufacturer</code> instance.
+   * @param {module:model/VoucherBatch} obj Optional instance to populate.
+   * @return {module:model/VoucherBatch} The populated <code>VoucherBatch</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
@@ -67,8 +71,17 @@
       if (data.hasOwnProperty('id')) {
         obj['id'] = ApiClient.convertToType(data['id'], 'String');
       }
-      if (data.hasOwnProperty('name')) {
-        obj['name'] = ApiClient.convertToType(data['name'], 'String');
+      if (data.hasOwnProperty('qty')) {
+        obj['qty'] = ApiClient.convertToType(data['qty'], 'Number');
+      }
+      if (data.hasOwnProperty('warrantyPlanId')) {
+        obj['warrantyPlanId'] = ApiClient.convertToType(data['warrantyPlanId'], 'String');
+      }
+      if (data.hasOwnProperty('note')) {
+        obj['note'] = ApiClient.convertToType(data['note'], 'String');
+      }
+      if (data.hasOwnProperty('voucherCodes')) {
+        obj['voucherCodes'] = ApiClient.convertToType(data['voucherCodes'], ['String']);
       }
     }
     return obj;
@@ -79,9 +92,21 @@
    */
   exports.prototype['id'] = undefined;
   /**
-   * @member {String} name
+   * @member {Number} qty
    */
-  exports.prototype['name'] = undefined;
+  exports.prototype['qty'] = undefined;
+  /**
+   * @member {String} warrantyPlanId
+   */
+  exports.prototype['warrantyPlanId'] = undefined;
+  /**
+   * @member {String} note
+   */
+  exports.prototype['note'] = undefined;
+  /**
+   * @member {Array.<String>} voucherCodes
+   */
+  exports.prototype['voucherCodes'] = undefined;
 
 
 

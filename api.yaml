@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   description: "Warranty life api definition for openapi 3.0.0 from here we generate api's"
-  version: "1.0.1"
+  version: "1.0.2"
   title: "Warranty Life"
   termsOfService: "http://swagger.io/terms/"
   contact:
@@ -45,6 +45,11 @@ tags:
   externalDocs:
     description: "Find out more"
     url: "https://www.warrantylife.com/developer/documentation#warranties"
+- name: "voucher-batch"
+  description: "batch of vouchers that customer can redeem"
+  externalDocs:
+    description: "Find out more"
+    url: "https://www.warrantylife.com/developer/documentation#voucher-batches"
 components:
   securitySchemes:
     basicAuth:
@@ -340,7 +345,29 @@ components:
         - itemId
         - warrantyPlanId
         - customerId
-               
+        
+    VoucherBatch:
+      type: object
+      properties:
+        id:
+          type: string
+          readOnly: true
+        qty:
+          type: integer
+          writeOnly: true
+        warrantyPlanId:
+          type: string
+        note:
+          type: string
+        voucherCodes:
+          type: array
+          readOnly: true
+          items:
+            type: string
+      required:
+        - qty
+        - warrantyPlanId
+        
 security:
   - basicAuth: []
 servers: 
@@ -877,3 +904,77 @@ paths:
       responses:
         '204':
           description: "OK"
+  
+  "/voucher-batch":
+    post:
+      tags:
+        - voucher-batch
+      summary: "create a bunch of vouchers for warranties"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VoucherBatch'
+      responses:
+        '201':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VoucherBatch'
+          headers:
+            Location:
+              schema:
+                type: string
+              description: location of created warranty
+        '403':
+          description: FORBIDDEN
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                  message:
+                    type: string
+                    
+  "/voucher/{voucherCode}":
+    put:
+      tags:
+        - voucher-batch
+      summary: "issue a warranty from the batch"
+      parameters: 
+        - name: voucherCode
+          in: path
+          required: true
+          description: "previously specified voucherCode for warranty"
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                orderRefId:
+                  type: string
+                refId:
+                  type: string
+                dateOfPurchase:
+                  type: string
+                  format: date-time
+      responses:
+        '204':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                  message:
+                    type: string
