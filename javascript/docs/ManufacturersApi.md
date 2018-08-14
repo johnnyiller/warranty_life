@@ -1,4 +1,4 @@
-# WarrantyLife.ManufacturersApi
+# WarrantyLifeApi.ManufacturersApi
 
 All URIs are relative to *https://sandbox.warrantylife.com/api/201308*
 
@@ -17,15 +17,15 @@ get list of manufacturers
 
 ### Example
 ```javascript
-var WarrantyLife = require('warranty_life');
-var defaultClient = WarrantyLife.ApiClient.instance;
+var WarrantyLifeApi = require('warranty_life_api');
+var defaultClient = WarrantyLifeApi.ApiClient.instance;
 
 // Configure HTTP basic authorization: basicAuth
 var basicAuth = defaultClient.authentications['basicAuth'];
 basicAuth.username = 'YOUR USERNAME';
 basicAuth.password = 'YOUR PASSWORD';
 
-var apiInstance = new WarrantyLife.ManufacturersApi();
+var apiInstance = new WarrantyLifeApi.ManufacturersApi();
 var opts = {
   'name': "name_example", // String | 
   'startAt': "startAt_example", // String | 
@@ -70,15 +70,15 @@ specific manufacturer from warranty life id
 
 ### Example
 ```javascript
-var WarrantyLife = require('warranty_life');
-var defaultClient = WarrantyLife.ApiClient.instance;
+var WarrantyLifeApi = require('warranty_life_api');
+var defaultClient = WarrantyLifeApi.ApiClient.instance;
 
 // Configure HTTP basic authorization: basicAuth
 var basicAuth = defaultClient.authentications['basicAuth'];
 basicAuth.username = 'YOUR USERNAME';
 basicAuth.password = 'YOUR PASSWORD';
 
-var apiInstance = new WarrantyLife.ManufacturersApi();
+var apiInstance = new WarrantyLifeApi.ManufacturersApi();
 var manufacturerId = "manufacturerId_example"; // String | Id for the manufacterer
 var callback = function(error, data, response) {
   if (error) {
@@ -117,16 +117,16 @@ create new manufacturer
 
 ### Example
 ```javascript
-var WarrantyLife = require('warranty_life');
-var defaultClient = WarrantyLife.ApiClient.instance;
+var WarrantyLifeApi = require('warranty_life_api');
+var defaultClient = WarrantyLifeApi.ApiClient.instance;
 
 // Configure HTTP basic authorization: basicAuth
 var basicAuth = defaultClient.authentications['basicAuth'];
 basicAuth.username = 'YOUR USERNAME';
 basicAuth.password = 'YOUR PASSWORD';
 
-var apiInstance = new WarrantyLife.ManufacturersApi();
-var manufacturer = new WarrantyLife.Manufacturer(); // Manufacturer | 
+var apiInstance = new WarrantyLifeApi.ManufacturersApi();
+var manufacturer = new WarrantyLifeApi.Manufacturer(); // Manufacturer | 
 var callback = function(error, data, response) {
   if (error) {
     console.error(error);

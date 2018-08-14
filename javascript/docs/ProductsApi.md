@@ -1,4 +1,4 @@
-# WarrantyLife.ProductsApi
+# WarrantyLifeApi.ProductsApi
 
 All URIs are relative to *https://sandbox.warrantylife.com/api/201308*
 
@@ -17,15 +17,15 @@ get a list of products
 
 ### Example
 ```javascript
-var WarrantyLife = require('warranty_life');
-var defaultClient = WarrantyLife.ApiClient.instance;
+var WarrantyLifeApi = require('warranty_life_api');
+var defaultClient = WarrantyLifeApi.ApiClient.instance;
 
 // Configure HTTP basic authorization: basicAuth
 var basicAuth = defaultClient.authentications['basicAuth'];
 basicAuth.username = 'YOUR USERNAME';
 basicAuth.password = 'YOUR PASSWORD';
 
-var apiInstance = new WarrantyLife.ProductsApi();
+var apiInstance = new WarrantyLifeApi.ProductsApi();
 var opts = {
   'sku': "sku_example", // String | previously specified sku for product
   'q': "q_example" // String | full text search style query
@@ -68,16 +68,16 @@ create new product
 
 ### Example
 ```javascript
-var WarrantyLife = require('warranty_life');
-var defaultClient = WarrantyLife.ApiClient.instance;
+var WarrantyLifeApi = require('warranty_life_api');
+var defaultClient = WarrantyLifeApi.ApiClient.instance;
 
 // Configure HTTP basic authorization: basicAuth
 var basicAuth = defaultClient.authentications['basicAuth'];
 basicAuth.username = 'YOUR USERNAME';
 basicAuth.password = 'YOUR PASSWORD';
 
-var apiInstance = new WarrantyLife.ProductsApi();
-var product = new WarrantyLife.Product(); // Product | 
+var apiInstance = new WarrantyLifeApi.ProductsApi();
+var product = new WarrantyLifeApi.Product(); // Product | 
 var callback = function(error, data, response) {
   if (error) {
     console.error(error);
@@ -115,15 +115,15 @@ get a single product by id
 
 ### Example
 ```javascript
-var WarrantyLife = require('warranty_life');
-var defaultClient = WarrantyLife.ApiClient.instance;
+var WarrantyLifeApi = require('warranty_life_api');
+var defaultClient = WarrantyLifeApi.ApiClient.instance;
 
 // Configure HTTP basic authorization: basicAuth
 var basicAuth = defaultClient.authentications['basicAuth'];
 basicAuth.username = 'YOUR USERNAME';
 basicAuth.password = 'YOUR PASSWORD';
 
-var apiInstance = new WarrantyLife.ProductsApi();
+var apiInstance = new WarrantyLifeApi.ProductsApi();
 var productId = "productId_example"; // String | Id for the product
 var callback = function(error, data, response) {
   if (error) {

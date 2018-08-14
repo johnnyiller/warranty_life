@@ -1,4 +1,4 @@
-# WarrantyLife.VoucherBatch
+# WarrantyLifeApi.VoucherBatch
 
 ## Properties
 Name | Type | Description | Notes

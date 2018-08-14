@@ -1,4 +1,4 @@
-# WarrantyLife.VoucherBatchApi
+# WarrantyLifeApi.VoucherBatchApi
 
 All URIs are relative to *https://sandbox.warrantylife.com/api/201308*
 
@@ -16,16 +16,16 @@ create a bunch of vouchers for warranties
 
 ### Example
 ```javascript
-var WarrantyLife = require('warranty_life');
-var defaultClient = WarrantyLife.ApiClient.instance;
+var WarrantyLifeApi = require('warranty_life_api');
+var defaultClient = WarrantyLifeApi.ApiClient.instance;
 
 // Configure HTTP basic authorization: basicAuth
 var basicAuth = defaultClient.authentications['basicAuth'];
 basicAuth.username = 'YOUR USERNAME';
 basicAuth.password = 'YOUR PASSWORD';
 
-var apiInstance = new WarrantyLife.VoucherBatchApi();
-var voucherBatch = new WarrantyLife.VoucherBatch(); // VoucherBatch | 
+var apiInstance = new WarrantyLifeApi.VoucherBatchApi();
+var voucherBatch = new WarrantyLifeApi.VoucherBatch(); // VoucherBatch | 
 var callback = function(error, data, response) {
   if (error) {
     console.error(error);
@@ -63,17 +63,17 @@ issue a warranty from the batch
 
 ### Example
 ```javascript
-var WarrantyLife = require('warranty_life');
-var defaultClient = WarrantyLife.ApiClient.instance;
+var WarrantyLifeApi = require('warranty_life_api');
+var defaultClient = WarrantyLifeApi.ApiClient.instance;
 
 // Configure HTTP basic authorization: basicAuth
 var basicAuth = defaultClient.authentications['basicAuth'];
 basicAuth.username = 'YOUR USERNAME';
 basicAuth.password = 'YOUR PASSWORD';
 
-var apiInstance = new WarrantyLife.VoucherBatchApi();
+var apiInstance = new WarrantyLifeApi.VoucherBatchApi();
 var voucherCode = "voucherCode_example"; // String | previously specified voucherCode for warranty
-var body = new WarrantyLife.Body(); // Body | 
+var body = new WarrantyLifeApi.Body(); // Body | 
 var callback = function(error, data, response) {
   if (error) {
     console.error(error);

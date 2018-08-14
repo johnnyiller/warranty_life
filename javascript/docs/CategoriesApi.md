@@ -1,4 +1,4 @@
-# WarrantyLife.CategoriesApi
+# WarrantyLifeApi.CategoriesApi
 
 All URIs are relative to *https://sandbox.warrantylife.com/api/201308*
 
@@ -16,15 +16,15 @@ Method | HTTP request | Description
 
 ### Example
 ```javascript
-var WarrantyLife = require('warranty_life');
-var defaultClient = WarrantyLife.ApiClient.instance;
+var WarrantyLifeApi = require('warranty_life_api');
+var defaultClient = WarrantyLifeApi.ApiClient.instance;
 
 // Configure HTTP basic authorization: basicAuth
 var basicAuth = defaultClient.authentications['basicAuth'];
 basicAuth.username = 'YOUR USERNAME';
 basicAuth.password = 'YOUR PASSWORD';
 
-var apiInstance = new WarrantyLife.CategoriesApi();
+var apiInstance = new WarrantyLifeApi.CategoriesApi();
 var categoryId = "categoryId_example"; // String | Id for the category you would like to retrieve
 var callback = function(error, data, response) {
   if (error) {
@@ -65,15 +65,15 @@ device categories
 
 ### Example
 ```javascript
-var WarrantyLife = require('warranty_life');
-var defaultClient = WarrantyLife.ApiClient.instance;
+var WarrantyLifeApi = require('warranty_life_api');
+var defaultClient = WarrantyLifeApi.ApiClient.instance;
 
 // Configure HTTP basic authorization: basicAuth
 var basicAuth = defaultClient.authentications['basicAuth'];
 basicAuth.username = 'YOUR USERNAME';
 basicAuth.password = 'YOUR PASSWORD';
 
-var apiInstance = new WarrantyLife.CategoriesApi();
+var apiInstance = new WarrantyLifeApi.CategoriesApi();
 var callback = function(error, data, response) {
   if (error) {
     console.error(error);

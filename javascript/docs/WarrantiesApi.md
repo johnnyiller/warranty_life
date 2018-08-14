@@ -1,4 +1,4 @@
-# WarrantyLife.WarrantiesApi
+# WarrantyLifeApi.WarrantiesApi
 
 All URIs are relative to *https://sandbox.warrantylife.com/api/201308*
 
@@ -19,17 +19,17 @@ create warranty
 
 ### Example
 ```javascript
-var WarrantyLife = require('warranty_life');
-var defaultClient = WarrantyLife.ApiClient.instance;
+var WarrantyLifeApi = require('warranty_life_api');
+var defaultClient = WarrantyLifeApi.ApiClient.instance;
 
 // Configure HTTP basic authorization: basicAuth
 var basicAuth = defaultClient.authentications['basicAuth'];
 basicAuth.username = 'YOUR USERNAME';
 basicAuth.password = 'YOUR PASSWORD';
 
-var apiInstance = new WarrantyLife.WarrantiesApi();
+var apiInstance = new WarrantyLifeApi.WarrantiesApi();
 var itemId = "itemId_example"; // String | Id for the product
-var warranty = new WarrantyLife.Warranty(); // Warranty | 
+var warranty = new WarrantyLifeApi.Warranty(); // Warranty | 
 var callback = function(error, data, response) {
   if (error) {
     console.error(error);
@@ -68,15 +68,15 @@ get warranty by query params
 
 ### Example
 ```javascript
-var WarrantyLife = require('warranty_life');
-var defaultClient = WarrantyLife.ApiClient.instance;
+var WarrantyLifeApi = require('warranty_life_api');
+var defaultClient = WarrantyLifeApi.ApiClient.instance;
 
 // Configure HTTP basic authorization: basicAuth
 var basicAuth = defaultClient.authentications['basicAuth'];
 basicAuth.username = 'YOUR USERNAME';
 basicAuth.password = 'YOUR PASSWORD';
 
-var apiInstance = new WarrantyLife.WarrantiesApi();
+var apiInstance = new WarrantyLifeApi.WarrantiesApi();
 var opts = {
   'refId': "refId_example", // String | previously specified refId for product
   'orderRefId': "orderRefId_example" // String | order reference id
@@ -119,16 +119,16 @@ create warranty
 
 ### Example
 ```javascript
-var WarrantyLife = require('warranty_life');
-var defaultClient = WarrantyLife.ApiClient.instance;
+var WarrantyLifeApi = require('warranty_life_api');
+var defaultClient = WarrantyLifeApi.ApiClient.instance;
 
 // Configure HTTP basic authorization: basicAuth
 var basicAuth = defaultClient.authentications['basicAuth'];
 basicAuth.username = 'YOUR USERNAME';
 basicAuth.password = 'YOUR PASSWORD';
 
-var apiInstance = new WarrantyLife.WarrantiesApi();
-var warranty = new WarrantyLife.Warranty(); // Warranty | 
+var apiInstance = new WarrantyLifeApi.WarrantiesApi();
+var warranty = new WarrantyLifeApi.Warranty(); // Warranty | 
 var callback = function(error, data, response) {
   if (error) {
     console.error(error);
@@ -166,15 +166,15 @@ delete an item
 
 ### Example
 ```javascript
-var WarrantyLife = require('warranty_life');
-var defaultClient = WarrantyLife.ApiClient.instance;
+var WarrantyLifeApi = require('warranty_life_api');
+var defaultClient = WarrantyLifeApi.ApiClient.instance;
 
 // Configure HTTP basic authorization: basicAuth
 var basicAuth = defaultClient.authentications['basicAuth'];
 basicAuth.username = 'YOUR USERNAME';
 basicAuth.password = 'YOUR PASSWORD';
 
-var apiInstance = new WarrantyLife.WarrantiesApi();
+var apiInstance = new WarrantyLifeApi.WarrantiesApi();
 var warrantyId = "warrantyId_example"; // String | previously specified warrantyId for warranty
 var callback = function(error, data, response) {
   if (error) {
@@ -213,15 +213,15 @@ get an item
 
 ### Example
 ```javascript
-var WarrantyLife = require('warranty_life');
-var defaultClient = WarrantyLife.ApiClient.instance;
+var WarrantyLifeApi = require('warranty_life_api');
+var defaultClient = WarrantyLifeApi.ApiClient.instance;
 
 // Configure HTTP basic authorization: basicAuth
 var basicAuth = defaultClient.authentications['basicAuth'];
 basicAuth.username = 'YOUR USERNAME';
 basicAuth.password = 'YOUR PASSWORD';
 
-var apiInstance = new WarrantyLife.WarrantiesApi();
+var apiInstance = new WarrantyLifeApi.WarrantiesApi();
 var warrantyId = "warrantyId_example"; // String | previously specified warrantyId for warranty
 var callback = function(error, data, response) {
   if (error) {

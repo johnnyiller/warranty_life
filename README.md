@@ -1,5 +1,10 @@
 # warranty_life
 
+## Generate the api for your language
+```shell
+openapi-generator generate -i api.yaml -g javascript -o ./javascript
+```
+
 ## Javascript
 
 Then install via:

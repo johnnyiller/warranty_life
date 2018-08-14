@@ -1,4 +1,4 @@
-# WarrantyLife.CustomerApi
+# WarrantyLifeApi.CustomerApi
 
 All URIs are relative to *https://sandbox.warrantylife.com/api/201308*
 
@@ -17,15 +17,15 @@ get customer by customer id
 
 ### Example
 ```javascript
-var WarrantyLife = require('warranty_life');
-var defaultClient = WarrantyLife.ApiClient.instance;
+var WarrantyLifeApi = require('warranty_life_api');
+var defaultClient = WarrantyLifeApi.ApiClient.instance;
 
 // Configure HTTP basic authorization: basicAuth
 var basicAuth = defaultClient.authentications['basicAuth'];
 basicAuth.username = 'YOUR USERNAME';
 basicAuth.password = 'YOUR PASSWORD';
 
-var apiInstance = new WarrantyLife.CustomerApi();
+var apiInstance = new WarrantyLifeApi.CustomerApi();
 var customerId = "customerId_example"; // String | Id for the warranty-plan you want to retrieve
 var callback = function(error, data, response) {
   if (error) {
@@ -64,15 +64,15 @@ get a customer by refId
 
 ### Example
 ```javascript
-var WarrantyLife = require('warranty_life');
-var defaultClient = WarrantyLife.ApiClient.instance;
+var WarrantyLifeApi = require('warranty_life_api');
+var defaultClient = WarrantyLifeApi.ApiClient.instance;
 
 // Configure HTTP basic authorization: basicAuth
 var basicAuth = defaultClient.authentications['basicAuth'];
 basicAuth.username = 'YOUR USERNAME';
 basicAuth.password = 'YOUR PASSWORD';
 
-var apiInstance = new WarrantyLife.CustomerApi();
+var apiInstance = new WarrantyLifeApi.CustomerApi();
 var opts = {
   'refId': "refId_example" // String | ref customer to your local database
 };
@@ -113,16 +113,16 @@ Add a new customer
 
 ### Example
 ```javascript
-var WarrantyLife = require('warranty_life');
-var defaultClient = WarrantyLife.ApiClient.instance;
+var WarrantyLifeApi = require('warranty_life_api');
+var defaultClient = WarrantyLifeApi.ApiClient.instance;
 
 // Configure HTTP basic authorization: basicAuth
 var basicAuth = defaultClient.authentications['basicAuth'];
 basicAuth.username = 'YOUR USERNAME';
 basicAuth.password = 'YOUR PASSWORD';
 
-var apiInstance = new WarrantyLife.CustomerApi();
-var customer = new WarrantyLife.Customer(); // Customer | 
+var apiInstance = new WarrantyLifeApi.CustomerApi();
+var customer = new WarrantyLifeApi.Customer(); // Customer | 
 var callback = function(error, data, response) {
   if (error) {
     console.error(error);

@@ -1,4 +1,4 @@
-# WarrantyLife.Body
+# WarrantyLifeApi.Body
 
 ## Properties
 Name | Type | Description | Notes

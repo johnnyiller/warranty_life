@@ -1,4 +1,4 @@
-# WarrantyLife.InlineResponse403
+# WarrantyLifeApi.InlineResponse403
 
 ## Properties
 Name | Type | Description | Notes
