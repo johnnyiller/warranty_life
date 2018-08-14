@@ -41,7 +41,8 @@ if you would like to use the promise client you must instantiate the api with th
 
 ```javascript
 var WarrantyLife = require('warranty_life');
-var client = require("warranty_life/src/ApiClientAsync")
+var ApiClientSync = require("warranty_life/api_client_async");
+var client = new ApiClientSync();
 
 // Configure HTTP basic authorization: basicAuth
 var basicAuth = client.authentications['basicAuth'];
