@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **name** | **String** |  | [optional] 
 **description** | **String** |  | [optional] 
 **productMinPrice** | **Number** |  | [optional] 
+**productMaxPrice** | **Number** |  | [optional] 
 **duration** | **Number** |  | [optional] 
 **durationUnit** | **String** |  | [optional] 
 **isDurationFixed** | **Boolean** |  | [optional] 

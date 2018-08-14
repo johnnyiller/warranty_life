@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   description: "Warranty life api definition for openapi 3.0.0 from here we generate api's"
-  version: "1.0.5"
+  version: "1.0.6"
   title: "Warranty Life"
   termsOfService: "http://swagger.io/terms/"
   contact:
@@ -92,6 +92,9 @@ components:
         description:
           type: string
         productMinPrice:
+          type: number
+          format: double
+        productMaxPrice:
           type: number
           format: double
         duration:

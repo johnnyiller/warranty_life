@@ -1,6 +1,6 @@
 {
   "name": "warranty_life",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Warranty_life_api_definition_for_openapi_3_0_0_from_here_we_generate_apis",
   "license": "Apache 2.0",
   "main": "src/index.js",
