@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   description: "Warranty life api definition for openapi 3.0.0 from here we generate api's"
-  version: "1.0.2"
+  version: "1.0.3"
   title: "Warranty Life"
   termsOfService: "http://swagger.io/terms/"
   contact:
@@ -62,7 +62,7 @@ components:
         id:
           type: integer
           readOnly: true
-        name: 
+        name:
           type: string
           readOnly: true
         subCategoryIds:
@@ -72,7 +72,7 @@ components:
             type: integer
         parentCategoryId:
           type: integer
-          
+
     WarrantyPlan:
       type: object
       properties:
@@ -89,10 +89,10 @@ components:
             type: string
         name:
           type: string
-        description: 
+        description:
           type: string
-        productMinPrice: 
-          type: number 
+        productMinPrice:
+          type: number
           format: double
         duration:
           type: integer
@@ -103,12 +103,12 @@ components:
           type: boolean
         partsDuration:
           type: integer
-        partsDurationUnit: 
+        partsDurationUnit:
           type: string
           enum: [days, months, years]
         labourDuration:
           type: integer
-        labourDurationUnit: 
+        labourDurationUnit:
           type: string
           enum: [days, months, years]
         rmaShippingCoverage:
@@ -118,51 +118,51 @@ components:
           type: string
         claimPhone:
           type: string
-        planAvailableFrom: 
+        planAvailableFrom:
           type: string
           format: date-time
-        planAvailableTo: 
+        planAvailableTo:
           type: string
           format: date-time
         sellableDuration:
           type: integer
-        sellableDurationUnit: 
+        sellableDurationUnit:
           type: string
           enum: [days, months, years]
         srp:
           type: number
           format: double
-        wholesaleCost: 
+        wholesaleCost:
           type: number
           format: double
         retailerCost:
           type: number
           format: double
-        retailPrice: 
+        retailPrice:
           type: number
           format: double
-        currencyCode: 
+        currencyCode:
           type: string
           enum: [USD, CAD]
         billingPeriod:
           type: integer
-        billingPeriodUnit: 
+        billingPeriodUnit:
           type: string
           enum: [days, months, years]
         countryCode:
           type: string
           enum: [US, CA, IN, BD, PH, AU]
-        termsUrl: 
+        termsUrl:
           type: string
           format: uri
-        updatedAt: 
+        updatedAt:
           type: string
           format: date-time
-          
+
     Customer:
       type: object
       properties:
-        id: 
+        id:
           type: string
           readOnly: true
         refId:
@@ -207,7 +207,7 @@ components:
         - postalCode
         - phone
         - country
-        
+
     Manufacturer:
       type: object
       properties:
@@ -218,7 +218,7 @@ components:
           type: string
       required:
         - name
-        
+
     Product:
       type: object
       properties:
@@ -259,7 +259,7 @@ components:
         - categoryId
         - manufacturerId
         - model
-        
+
     Item:
       type: object
       properties:
@@ -307,8 +307,8 @@ components:
           type: boolean
         categoryId:
           type: string
-          
-    Warranty:   
+
+    Warranty:
       type: object
       properties:
         id:
@@ -345,7 +345,7 @@ components:
         - itemId
         - warrantyPlanId
         - customerId
-        
+
     VoucherBatch:
       type: object
       properties:
@@ -367,10 +367,10 @@ components:
       required:
         - qty
         - warrantyPlanId
-        
+
 security:
   - basicAuth: []
-servers: 
+servers:
   - url: "https://sandbox.warrantylife.com/api/201308"
     description: "sandbox api for warranty life api"
   - url: 'https://www.warrantylife.com/api/201308'
@@ -378,20 +378,20 @@ servers:
 paths:
   /categories:
     get:
-      tags: 
+      tags:
         - "categories"
       summary: "List of all categories"
       description: "device categories"
-      security: 
+      security:
         - basicAuth: []
       responses:
         '200':    # status code
           description: A JSON array catgoriesa
           content:
             application/json:
-              schema: 
+              schema:
                 type: array
-                items: 
+                items:
                   $ref: "#/components/schemas/Category"
   '/categories/{categoryId}':
     get:
@@ -402,9 +402,9 @@ paths:
           description: "Id for the category you would like to retrieve"
           schema:
             type: string
-      tags: 
+      tags:
         - "categories"
-      security: 
+      security:
         - basicAuth: []
       responses:
         '200':
@@ -413,7 +413,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Category"
-                
+
   '/warranty-plans':
     get:
       parameters:
@@ -432,9 +432,9 @@ paths:
           description: OK
           content:
             application/json:
-              schema: 
+              schema:
                 type: array
-                items: 
+                items:
                   $ref: "#/components/schemas/WarrantyPlan"
   '/warranty-plans/{warrantyPlanId}':
     get:
@@ -454,14 +454,14 @@ paths:
           description: OK
           content:
             application/json:
-              schema: 
+              schema:
                 type: array
-                items: 
+                items:
                   $ref: "#/components/schemas/WarrantyPlan"
-  
+
   '/customers':
     post:
-      tags: 
+      tags:
         - "customer"
       summary: "Add a new customer"
       requestBody:
@@ -494,10 +494,10 @@ paths:
                   message:
                     type: string
     get:
-      tags: 
+      tags:
         - customer
       summary: "get a customer by refId"
-      parameters: 
+      parameters:
         - name: refId
           in: query
           required: false
@@ -511,10 +511,10 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Customer'
-                
+
   '/customers/{customerId}':
     get:
-      tags: 
+      tags:
         - customer
       summary: "get customer by customer id"
       parameters:
@@ -531,13 +531,13 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Customer'
-  
+
   '/manufacturers/{manufacturerId}':
     get:
       tags:
         - manufacturers
       summary: "specific manufacturer from warranty life id"
-      parameters: 
+      parameters:
         - name: manufacturerId
           in: path
           required: true
@@ -551,13 +551,13 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Manufacturer'
-  
+
   '/manufacturers':
     get:
-      tags: 
+      tags:
         - manufacturers
       summary: "get list of manufacturers"
-      parameters: 
+      parameters:
         - name: name
           in: query
           schema:
@@ -579,9 +579,9 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Manufacturer'
-                  
+
     post:
-      tags: 
+      tags:
         - manufacturers
       summary: "create new manufacturer"
       requestBody:
@@ -613,13 +613,13 @@ paths:
                     type: integer
                   message:
                     type: string
-  
+
   '/products/{productId}':
     get:
       tags:
         - products
       summary: "get a single product by id"
-      parameters: 
+      parameters:
         - name: productId
           in: path
           required: true
@@ -633,13 +633,13 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Product'
-                
+
   '/products':
     get:
-      tags: 
+      tags:
         - products
       summary: "get a list of products"
-      parameters: 
+      parameters:
         - name: sku
           in: query
           description: "previously specified sku for product"
@@ -660,7 +660,7 @@ paths:
                 items:
                   $ref: '#/components/schemas/Product'
     post:
-      tags: 
+      tags:
         - products
       summary: "create new product"
       requestBody:
@@ -692,13 +692,13 @@ paths:
                     type: integer
                   message:
                     type: string
-                
+
   '/items/{itemId}':
     get:
-      tags: 
+      tags:
         - items
       summary: "get an item"
-      parameters: 
+      parameters:
         - name: itemId
           in: path
           required: true
@@ -712,14 +712,14 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Item'
-                
+
   '/items/{itemId}/warranties':
     post:
       tags:
         - warranties
         - items
       summary: "create warranty"
-      parameters: 
+      parameters:
         - name: itemId
           in: path
           required: true
@@ -755,13 +755,13 @@ paths:
                     type: integer
                   message:
                     type: string
-                    
+
   '/items':
     get:
-      tags: 
+      tags:
         - items
       summary: "get an item"
-      parameters: 
+      parameters:
         - name: refId
           in: query
           description: "previously specified refId for product"
@@ -780,7 +780,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Item'
     post:
-      tags: 
+      tags:
         - items
       summary: "create new item"
       requestBody:
@@ -850,7 +850,7 @@ paths:
       tags:
         - warranties
       summary: "get warranty by query params"
-      parameters: 
+      parameters:
         - name: refId
           in: query
           description: "previously specified refId for product"
@@ -870,13 +870,13 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Warranty'
-                    
+
   "/warranties/{warrantyId}":
     get:
-      tags: 
+      tags:
         - warranties
       summary: "get an item"
-      parameters: 
+      parameters:
         - name: warrantyId
           in: path
           required: true
@@ -891,10 +891,10 @@ paths:
               schema:
                 $ref: '#/components/schemas/Warranty'
     delete:
-      tags: 
+      tags:
         - warranties
       summary: "delete an item"
-      parameters: 
+      parameters:
         - name: warrantyId
           in: path
           required: true
@@ -904,7 +904,7 @@ paths:
       responses:
         '204':
           description: "OK"
-  
+
   "/voucher-batch":
     post:
       tags:
@@ -939,13 +939,13 @@ paths:
                     type: integer
                   message:
                     type: string
-                    
+
   "/voucher/{voucherCode}":
     put:
       tags:
         - voucher-batch
       summary: "issue a warranty from the batch"
-      parameters: 
+      parameters:
         - name: voucherCode
           in: path
           required: true
