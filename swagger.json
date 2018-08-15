@@ -1,0 +1,1479 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "contact": {
+      "email": "jeff.durand@gmail.com"
+    },
+    "description": "Warranty life Api",
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    },
+    "title": "Warranty Life API",
+    "version": "1.0.7"
+  },
+  "host": "sandbox.warrantylife.com",
+  "basePath": "/api/201308",
+  "schemes": [
+    "https"
+  ],
+  "paths": {
+    "/categories": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "A JSON array catgoriesa",
+            "schema": {
+              "items": {
+                "$ref": "#/definitions/Category"
+              },
+              "type": "array"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ],
+        "tags": [
+          "categories"
+        ],
+        "description": "device categories",
+        "summary": "List of all categories"
+      }
+    },
+    "/categories/{categoryId}": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "description": "Id for the category you would like to retrieve",
+            "in": "path",
+            "name": "categoryId",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Category"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ],
+        "tags": [
+          "categories"
+        ]
+      }
+    },
+    "/customers": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "description": "ref customer to your local database",
+            "in": "query",
+            "name": "refId",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Customer"
+            }
+          }
+        },
+        "tags": [
+          "customer"
+        ],
+        "summary": "get a customer by refId"
+      },
+      "post": {
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Customer"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "OK",
+            "headers": {
+              "Location": {
+                "description": "location of created customer",
+                "type": "string"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/Customer"
+            }
+          },
+          "403": {
+            "description": "FORBIDDEN",
+            "schema": {
+              "properties": {
+                "code": {
+                  "type": "integer"
+                },
+                "message": {
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            }
+          }
+        },
+        "tags": [
+          "customer"
+        ],
+        "summary": "Add a new customer"
+      }
+    },
+    "/customers/{customerId}": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "description": "Id for the warranty-plan you want to retrieve",
+            "in": "path",
+            "name": "customerId",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Customer"
+            }
+          }
+        },
+        "tags": [
+          "customer"
+        ],
+        "summary": "get customer by customer id"
+      }
+    },
+    "/items": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "description": "previously specified refId for product",
+            "in": "query",
+            "name": "refId",
+            "type": "string"
+          },
+          {
+            "description": "order reference id",
+            "in": "query",
+            "name": "orderRefId",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Item"
+            }
+          }
+        },
+        "tags": [
+          "items"
+        ],
+        "summary": "get an item"
+      },
+      "post": {
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Item"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "OK",
+            "headers": {
+              "Location": {
+                "description": "location of created item",
+                "type": "string"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/Item"
+            }
+          },
+          "403": {
+            "description": "FORBIDDEN",
+            "schema": {
+              "properties": {
+                "code": {
+                  "type": "integer"
+                },
+                "message": {
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            }
+          }
+        },
+        "tags": [
+          "items"
+        ],
+        "summary": "create new item"
+      }
+    },
+    "/items/{itemId}": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "description": "Id for the product",
+            "in": "path",
+            "name": "itemId",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Item"
+            }
+          }
+        },
+        "tags": [
+          "items"
+        ],
+        "summary": "get an item"
+      }
+    },
+    "/items/{itemId}/warranties": {
+      "post": {
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "description": "Id for the product",
+            "in": "path",
+            "name": "itemId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Warranty"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "OK",
+            "headers": {
+              "Location": {
+                "description": "location of created warranty",
+                "type": "string"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/Warranty"
+            }
+          },
+          "403": {
+            "description": "FORBIDDEN",
+            "schema": {
+              "properties": {
+                "code": {
+                  "type": "integer"
+                },
+                "message": {
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            }
+          }
+        },
+        "tags": [
+          "warranties",
+          "items"
+        ],
+        "summary": "create warranty"
+      }
+    },
+    "/manufacturers": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "name",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "startAt",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "items": {
+                "$ref": "#/definitions/Manufacturer"
+              },
+              "type": "array"
+            }
+          }
+        },
+        "tags": [
+          "manufacturers"
+        ],
+        "summary": "get list of manufacturers"
+      },
+      "post": {
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Manufacturer"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "OK",
+            "headers": {
+              "Location": {
+                "description": "location of created manufacturer",
+                "type": "string"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/Manufacturer"
+            }
+          },
+          "403": {
+            "description": "FORBIDDEN",
+            "schema": {
+              "properties": {
+                "code": {
+                  "type": "integer"
+                },
+                "message": {
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            }
+          }
+        },
+        "tags": [
+          "manufacturers"
+        ],
+        "summary": "create new manufacturer"
+      }
+    },
+    "/manufacturers/{manufacturerId}": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "description": "Id for the manufacterer",
+            "in": "path",
+            "name": "manufacturerId",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Manufacturer"
+            }
+          }
+        },
+        "tags": [
+          "manufacturers"
+        ],
+        "summary": "specific manufacturer from warranty life id"
+      }
+    },
+    "/products": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "description": "previously specified sku for product",
+            "in": "query",
+            "name": "sku",
+            "type": "string"
+          },
+          {
+            "description": "full text search style query",
+            "in": "query",
+            "name": "q",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "items": {
+                "$ref": "#/definitions/Product"
+              },
+              "type": "array"
+            }
+          }
+        },
+        "tags": [
+          "products"
+        ],
+        "summary": "get a list of products"
+      },
+      "post": {
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Product"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "OK",
+            "headers": {
+              "Location": {
+                "description": "location of created product",
+                "type": "string"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/Product"
+            }
+          },
+          "403": {
+            "description": "FORBIDDEN",
+            "schema": {
+              "properties": {
+                "code": {
+                  "type": "integer"
+                },
+                "message": {
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            }
+          }
+        },
+        "tags": [
+          "products"
+        ],
+        "summary": "create new product"
+      }
+    },
+    "/products/{productId}": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "description": "Id for the product",
+            "in": "path",
+            "name": "productId",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Product"
+            }
+          }
+        },
+        "tags": [
+          "products"
+        ],
+        "summary": "get a single product by id"
+      }
+    },
+    "/voucher-batch": {
+      "post": {
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/VoucherBatch"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "OK",
+            "headers": {
+              "Location": {
+                "description": "location of created warranty",
+                "type": "string"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/VoucherBatch"
+            }
+          },
+          "403": {
+            "description": "FORBIDDEN",
+            "schema": {
+              "properties": {
+                "code": {
+                  "type": "integer"
+                },
+                "message": {
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            }
+          }
+        },
+        "tags": [
+          "voucher-batch"
+        ],
+        "summary": "create a bunch of vouchers for warranties"
+      }
+    },
+    "/voucher/{voucherCode}": {
+      "put": {
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "description": "previously specified voucherCode for warranty",
+            "in": "path",
+            "name": "voucherCode",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "properties": {
+                "dateOfPurchase": {
+                  "format": "date-time",
+                  "type": "string"
+                },
+                "orderRefId": {
+                  "type": "string"
+                },
+                "refId": {
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "OK",
+            "schema": {
+              "properties": {
+                "code": {
+                  "type": "integer"
+                },
+                "message": {
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            }
+          }
+        },
+        "tags": [
+          "voucher-batch"
+        ],
+        "summary": "issue a warranty from the batch"
+      }
+    },
+    "/warranties": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "description": "previously specified refId for product",
+            "in": "query",
+            "name": "refId",
+            "type": "string"
+          },
+          {
+            "description": "order reference id",
+            "in": "query",
+            "name": "orderRefId",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "items": {
+                "$ref": "#/definitions/Warranty"
+              },
+              "type": "array"
+            }
+          }
+        },
+        "tags": [
+          "warranties"
+        ],
+        "summary": "get warranty by query params"
+      },
+      "post": {
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Warranty"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "OK",
+            "headers": {
+              "Location": {
+                "description": "location of created warranty",
+                "type": "string"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/Warranty"
+            }
+          },
+          "403": {
+            "description": "FORBIDDEN",
+            "schema": {
+              "properties": {
+                "code": {
+                  "type": "integer"
+                },
+                "message": {
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            }
+          }
+        },
+        "tags": [
+          "warranties"
+        ],
+        "summary": "create warranty"
+      }
+    },
+    "/warranties/{warrantyId}": {
+      "delete": {
+        "parameters": [
+          {
+            "description": "previously specified warrantyId for warranty",
+            "in": "path",
+            "name": "warrantyId",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "warranties"
+        ],
+        "summary": "delete an item"
+      },
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "description": "previously specified warrantyId for warranty",
+            "in": "path",
+            "name": "warrantyId",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Warranty"
+            }
+          }
+        },
+        "tags": [
+          "warranties"
+        ],
+        "summary": "get an item"
+      }
+    },
+    "/warranty-plans": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "description": "Id for the category you would like to retrieve",
+            "in": "query",
+            "name": "categoryId",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "items": {
+                "$ref": "#/definitions/WarrantyPlan"
+              },
+              "type": "array"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ],
+        "tags": [
+          "warranty-plans"
+        ]
+      }
+    },
+    "/warranty-plans/{warrantyPlanId}": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "description": "Id for the warranty-plan you want to retrieve",
+            "in": "path",
+            "name": "warrantyPlanId",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "items": {
+                "$ref": "#/definitions/WarrantyPlan"
+              },
+              "type": "array"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ],
+        "tags": [
+          "warranty-plans"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "Category": {
+      "properties": {
+        "id": {
+          "readOnly": true,
+          "type": "integer"
+        },
+        "name": {
+          "readOnly": true,
+          "type": "string"
+        },
+        "parentCategoryId": {
+          "type": "integer"
+        },
+        "subCategoryIds": {
+          "items": {
+            "type": "integer"
+          },
+          "readOnly": true,
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "Customer": {
+      "properties": {
+        "city": {
+          "type": "string"
+        },
+        "companyName": {
+          "type": "string"
+        },
+        "country": {
+          "enum": [
+            "US",
+            "CA",
+            "IN",
+            "BD",
+            "PH",
+            "AU"
+          ],
+          "type": "string"
+        },
+        "customerUrl": {
+          "readOnly": true,
+          "type": "string"
+        },
+        "emailAddress": {
+          "type": "string"
+        },
+        "firstName": {
+          "type": "string"
+        },
+        "id": {
+          "readOnly": true,
+          "type": "string"
+        },
+        "isWalkIn": {
+          "type": "boolean"
+        },
+        "lastName": {
+          "type": "string"
+        },
+        "optIn": {
+          "type": "boolean"
+        },
+        "orderRefId": {
+          "type": "string"
+        },
+        "phone": {
+          "type": "string"
+        },
+        "postalCode": {
+          "type": "string"
+        },
+        "refId": {
+          "type": "string"
+        },
+        "salesRepEmail": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        },
+        "streetAddress": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "firstName",
+        "streetAddress",
+        "city",
+        "state",
+        "postalCode",
+        "phone",
+        "country"
+      ],
+      "type": "object"
+    },
+    "Item": {
+      "properties": {
+        "categoryId": {
+          "type": "string"
+        },
+        "contractYears": {
+          "type": "string"
+        },
+        "customerId": {
+          "type": "string"
+        },
+        "dateOfPurchase": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "hasDamage": {
+          "type": "boolean"
+        },
+        "id": {
+          "readOnly": true,
+          "type": "string"
+        },
+        "isRepaired": {
+          "type": "boolean"
+        },
+        "orderRefId": {
+          "type": "string"
+        },
+        "pricePaid": {
+          "format": "double",
+          "type": "number"
+        },
+        "pricePaidCurrencyCode": {
+          "enum": [
+            "USD",
+            "CAD"
+          ],
+          "type": "string"
+        },
+        "productId": {
+          "type": "string"
+        },
+        "productSku": {
+          "type": "string"
+        },
+        "purchasedCondition": {
+          "enum": [
+            "NEW",
+            "USED",
+            "REFURBISHED"
+          ],
+          "type": "string"
+        },
+        "refId": {
+          "type": "string"
+        },
+        "serialNumber": {
+          "type": "string"
+        },
+        "serialNumberType": {
+          "enum": [
+            "ESN",
+            "IMEI",
+            "MEID"
+          ],
+          "type": "string"
+        },
+        "shippingPaid": {
+          "format": "double",
+          "type": "number"
+        },
+        "taxPaid": {
+          "format": "double",
+          "type": "number"
+        }
+      },
+      "type": "object"
+    },
+    "Manufacturer": {
+      "properties": {
+        "id": {
+          "readOnly": true,
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "name"
+      ],
+      "type": "object"
+    },
+    "Product": {
+      "properties": {
+        "buybackOffer": {
+          "type": "string"
+        },
+        "categoryId": {
+          "type": "string"
+        },
+        "ean": {
+          "type": "string"
+        },
+        "estimatedValue": {
+          "type": "string"
+        },
+        "flags": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "id": {
+          "readOnly": true,
+          "type": "string"
+        },
+        "isCategoryKnown": {
+          "type": "boolean"
+        },
+        "manufacturer": {
+          "$ref": "#/definitions/Manufacturer"
+        },
+        "manufacturerId": {
+          "type": "string"
+        },
+        "model": {
+          "type": "string"
+        },
+        "mpn": {
+          "type": "string"
+        },
+        "msrp": {
+          "format": "double",
+          "type": "number"
+        },
+        "msrpCurrency": {
+          "enum": [
+            "USD",
+            "CAD"
+          ],
+          "type": "string"
+        },
+        "upc": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "categoryId",
+        "manufacturerId",
+        "model"
+      ],
+      "type": "object"
+    },
+    "VoucherBatch": {
+      "properties": {
+        "id": {
+          "readOnly": true,
+          "type": "string"
+        },
+        "note": {
+          "type": "string"
+        },
+        "qty": {
+          "type": "integer",
+          "writeOnly": true
+        },
+        "voucherCodes": {
+          "items": {
+            "type": "string"
+          },
+          "readOnly": true,
+          "type": "array"
+        },
+        "warrantyPlanId": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "qty",
+        "warrantyPlanId"
+      ],
+      "type": "object"
+    },
+    "Warranty": {
+      "properties": {
+        "customerId": {
+          "type": "string"
+        },
+        "dateOfPurchase": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "id": {
+          "readOnly": true,
+          "type": "string"
+        },
+        "itemId": {
+          "type": "string"
+        },
+        "orderRefId": {
+          "type": "string"
+        },
+        "pricePaid": {
+          "format": "double",
+          "type": "number"
+        },
+        "pricePaidCurrencyCode": {
+          "enum": [
+            "USD",
+            "CAD"
+          ],
+          "type": "string"
+        },
+        "refId": {
+          "type": "string"
+        },
+        "registrationCode": {
+          "type": "string"
+        },
+        "taxPaid": {
+          "format": "double",
+          "type": "number"
+        },
+        "warrantyPlanId": {
+          "type": "string"
+        },
+        "warrantyUrl": {
+          "readOnly": true,
+          "type": "string"
+        }
+      },
+      "required": [
+        "itemId",
+        "warrantyPlanId",
+        "customerId"
+      ],
+      "type": "object"
+    },
+    "WarrantyPlan": {
+      "properties": {
+        "applicableCategoryIds": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "applicableProductFlags": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "billingPeriod": {
+          "type": "integer"
+        },
+        "billingPeriodUnit": {
+          "enum": [
+            "days",
+            "months",
+            "years"
+          ],
+          "type": "string"
+        },
+        "claimPhone": {
+          "type": "string"
+        },
+        "countryCode": {
+          "enum": [
+            "US",
+            "CA",
+            "IN",
+            "BD",
+            "PH",
+            "AU"
+          ],
+          "type": "string"
+        },
+        "currencyCode": {
+          "enum": [
+            "USD",
+            "CAD"
+          ],
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "duration": {
+          "type": "integer"
+        },
+        "durationUnit": {
+          "enum": [
+            "days",
+            "months",
+            "years"
+          ],
+          "type": "string"
+        },
+        "id": {
+          "readOnly": true,
+          "type": "integer"
+        },
+        "isDurationFixed": {
+          "type": "boolean"
+        },
+        "labourDuration": {
+          "type": "integer"
+        },
+        "labourDurationUnit": {
+          "enum": [
+            "days",
+            "months",
+            "years"
+          ],
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "partsDuration": {
+          "type": "integer"
+        },
+        "partsDurationUnit": {
+          "enum": [
+            "days",
+            "months",
+            "years"
+          ],
+          "type": "string"
+        },
+        "planAvailableFrom": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "planAvailableTo": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "productMaxPrice": {
+          "format": "double",
+          "type": "number"
+        },
+        "productMinPrice": {
+          "format": "double",
+          "type": "number"
+        },
+        "retailPrice": {
+          "format": "double",
+          "type": "number"
+        },
+        "retailerCost": {
+          "format": "double",
+          "type": "number"
+        },
+        "rmaShippingCoverage": {
+          "enum": [
+            0,
+            1,
+            2
+          ],
+          "type": "integer"
+        },
+        "sellableDuration": {
+          "type": "integer"
+        },
+        "sellableDurationUnit": {
+          "enum": [
+            "days",
+            "months",
+            "years"
+          ],
+          "type": "string"
+        },
+        "serviceLocation": {
+          "type": "string"
+        },
+        "srp": {
+          "format": "double",
+          "type": "number"
+        },
+        "termsUrl": {
+          "format": "uri",
+          "type": "string"
+        },
+        "updatedAt": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "wholesaleCost": {
+          "format": "double",
+          "type": "number"
+        }
+      },
+      "type": "object"
+    }
+  },
+  "securityDefinitions": {
+    "basicAuth": {
+      "type": "basic"
+    }
+  },
+  "security": [
+    {
+      "basicAuth": []
+    }
+  ],
+  "tags": [
+    {
+      "externalDocs": {
+        "description": "Find out more",
+        "url": "https://www.warrantylife.com/developer/documentation#categories"
+      },
+      "description": "Device categories and sub-categories",
+      "name": "categories"
+    },
+    {
+      "externalDocs": {
+        "description": "Find out more",
+        "url": "https://www.warrantylife.com/developer/documentation#plans"
+      },
+      "description": "Plans that a person can puchase for a device",
+      "name": "warranty-plans"
+    },
+    {
+      "externalDocs": {
+        "description": "Find out more",
+        "url": "https://www.warrantylife.com/developer/documentation#customers"
+      },
+      "description": "Unique individual purchasing the warranty",
+      "name": "customer"
+    },
+    {
+      "externalDocs": {
+        "description": "Find out more",
+        "url": "https://www.warrantylife.com/developer/documentation#manufacturers"
+      },
+      "description": "Manufacterer of product",
+      "name": "manufacturers"
+    },
+    {
+      "externalDocs": {
+        "description": "Find out more",
+        "url": "https://www.warrantylife.com/developer/documentation#products"
+      },
+      "description": "product from sellers catalog",
+      "name": "products"
+    },
+    {
+      "externalDocs": {
+        "description": "Find out more",
+        "url": "https://www.warrantylife.com/developer/documentation#items"
+      },
+      "description": "item sold links product with category with price of actual item",
+      "name": "items"
+    },
+    {
+      "externalDocs": {
+        "description": "Find out more",
+        "url": "https://www.warrantylife.com/developer/documentation#warranties"
+      },
+      "description": "actual issued warranties",
+      "name": "warranties"
+    },
+    {
+      "externalDocs": {
+        "description": "Find out more",
+        "url": "https://www.warrantylife.com/developer/documentation#voucher-batches"
+      },
+      "description": "batch of vouchers that customer can redeem",
+      "name": "voucher-batch"
+    }
+  ],
+  "x-components": {}
+}
