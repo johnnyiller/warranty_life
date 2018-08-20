@@ -61,3 +61,5 @@ api.categoriesCategoryIdGet(categoryId).
   catch((e) => console.log(e))
 
 ```
+
+![alt ERD](https://github.com/johnnyiller/warranty_life/raw/master/Warranty%20%20Life%20ERD.png)
