@@ -16,6 +16,7 @@ Name | Type | Description | Notes
 **ean** | **String** |  | [optional] 
 **estimatedValue** | **String** |  | [optional] 
 **buybackOffer** | **String** |  | [optional] 
+**sku** | **String** |  | [optional] 
 **flags** | **[String]** |  | [optional] 
 
 

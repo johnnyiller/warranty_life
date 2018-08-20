@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   description: "Warranty life Api"
-  version: "1.0.7"
+  version: "1.0.8"
   title: "Warranty Life API"
   contact:
     email: "jeff.durand@gmail.com"
@@ -253,6 +253,9 @@ components:
           type: string
         buybackOffer:
           type: string
+        sku:
+          type: string
+          writeOnly: true
         flags:
           type: array
           items:
