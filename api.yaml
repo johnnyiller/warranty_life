@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   description: "Warranty life Api"
-  version: "1.0.8"
+  version: "1.0.9"
   title: "Warranty Life API"
   contact:
     email: "jeff.durand@gmail.com"

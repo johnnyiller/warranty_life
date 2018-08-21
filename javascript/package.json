@@ -1,6 +1,6 @@
 {
   "name": "warranty_life_api",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "Warranty_life_Api",
   "license": "Apache 2.0",
   "main": "src/index.js",
