@@ -19,7 +19,7 @@ tags:
   externalDocs:
     description: "Find out more"
     url: "https://www.warrantylife.com/developer/documentation#plans"
-- name: "customer"
+- name: "customers"
   description: "Unique individual purchasing the warranty"
   externalDocs:
     description: "Find out more"
@@ -169,6 +169,7 @@ components:
           readOnly: true
         refId:
           type: string
+          description: "ID that you system uses to identify the customer"
         orderRefId:
           type: string
         customerUrl:
@@ -467,7 +468,7 @@ paths:
   '/customers':
     post:
       tags:
-        - "customer"
+        - "customers"
       summary: "Add a new customer"
       requestBody:
         required: true
@@ -500,7 +501,7 @@ paths:
                     type: string
     get:
       tags:
-        - customer
+        - customers
       summary: "get a customer by refId"
       parameters:
         - name: refId
@@ -520,7 +521,7 @@ paths:
   '/customers/{customerId}':
     get:
       tags:
-        - customer
+        - customers
       summary: "get customer by customer id"
       parameters:
         - name: customerId

@@ -145,6 +145,7 @@
    */
   exports.prototype['id'] = undefined;
   /**
+   * ID that you system uses to identify the customer
    * @member {String} refId
    */
   exports.prototype['refId'] = undefined;

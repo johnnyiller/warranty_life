@@ -17,12 +17,12 @@
 (function(factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/Body', 'model/Category', 'model/Customer', 'model/InlineResponse403', 'model/Item', 'model/Manufacturer', 'model/Product', 'model/VoucherBatch', 'model/Warranty', 'model/WarrantyPlan', 'api/CategoriesApi', 'api/CustomerApi', 'api/ItemsApi', 'api/ManufacturersApi', 'api/ProductsApi', 'api/VoucherBatchApi', 'api/WarrantiesApi', 'api/WarrantyPlansApi'], factory);
+    define(['ApiClient', 'model/Body', 'model/Category', 'model/Customer', 'model/InlineResponse403', 'model/Item', 'model/Manufacturer', 'model/Product', 'model/VoucherBatch', 'model/Warranty', 'model/WarrantyPlan', 'api/CategoriesApi', 'api/CustomersApi', 'api/ItemsApi', 'api/ManufacturersApi', 'api/ProductsApi', 'api/VoucherBatchApi', 'api/WarrantiesApi', 'api/WarrantyPlansApi'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('./ApiClient'), require('./model/Body'), require('./model/Category'), require('./model/Customer'), require('./model/InlineResponse403'), require('./model/Item'), require('./model/Manufacturer'), require('./model/Product'), require('./model/VoucherBatch'), require('./model/Warranty'), require('./model/WarrantyPlan'), require('./api/CategoriesApi'), require('./api/CustomerApi'), require('./api/ItemsApi'), require('./api/ManufacturersApi'), require('./api/ProductsApi'), require('./api/VoucherBatchApi'), require('./api/WarrantiesApi'), require('./api/WarrantyPlansApi'));
+    module.exports = factory(require('./ApiClient'), require('./model/Body'), require('./model/Category'), require('./model/Customer'), require('./model/InlineResponse403'), require('./model/Item'), require('./model/Manufacturer'), require('./model/Product'), require('./model/VoucherBatch'), require('./model/Warranty'), require('./model/WarrantyPlan'), require('./api/CategoriesApi'), require('./api/CustomersApi'), require('./api/ItemsApi'), require('./api/ManufacturersApi'), require('./api/ProductsApi'), require('./api/VoucherBatchApi'), require('./api/WarrantiesApi'), require('./api/WarrantyPlansApi'));
   }
-}(function(ApiClient, Body, Category, Customer, InlineResponse403, Item, Manufacturer, Product, VoucherBatch, Warranty, WarrantyPlan, CategoriesApi, CustomerApi, ItemsApi, ManufacturersApi, ProductsApi, VoucherBatchApi, WarrantiesApi, WarrantyPlansApi) {
+}(function(ApiClient, Body, Category, Customer, InlineResponse403, Item, Manufacturer, Product, VoucherBatch, Warranty, WarrantyPlan, CategoriesApi, CustomersApi, ItemsApi, ManufacturersApi, ProductsApi, VoucherBatchApi, WarrantiesApi, WarrantyPlansApi) {
   'use strict';
 
   /**
@@ -118,10 +118,10 @@
      */
     CategoriesApi: CategoriesApi,
     /**
-     * The CustomerApi service constructor.
-     * @property {module:api/CustomerApi}
+     * The CustomersApi service constructor.
+     * @property {module:api/CustomersApi}
      */
-    CustomerApi: CustomerApi,
+    CustomersApi: CustomersApi,
     /**
      * The ItemsApi service constructor.
      * @property {module:api/ItemsApi}

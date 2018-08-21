@@ -4,7 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **String** |  | [optional] 
-**refId** | **String** |  | [optional] 
+**refId** | **String** | ID that you system uses to identify the customer | [optional] 
 **orderRefId** | **String** |  | [optional] 
 **customerUrl** | **String** |  | [optional] 
 **salesRepEmail** | **String** |  | [optional] 

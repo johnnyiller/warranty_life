@@ -124,9 +124,9 @@ Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *WarrantyLifeApi.CategoriesApi* | [**categoriesCategoryIdGet**](docs/CategoriesApi.md#categoriesCategoryIdGet) | **GET** /categories/{categoryId} | 
 *WarrantyLifeApi.CategoriesApi* | [**categoriesGet**](docs/CategoriesApi.md#categoriesGet) | **GET** /categories | List of all categories
-*WarrantyLifeApi.CustomerApi* | [**customersCustomerIdGet**](docs/CustomerApi.md#customersCustomerIdGet) | **GET** /customers/{customerId} | get customer by customer id
-*WarrantyLifeApi.CustomerApi* | [**customersGet**](docs/CustomerApi.md#customersGet) | **GET** /customers | get a customer by refId
-*WarrantyLifeApi.CustomerApi* | [**customersPost**](docs/CustomerApi.md#customersPost) | **POST** /customers | Add a new customer
+*WarrantyLifeApi.CustomersApi* | [**customersCustomerIdGet**](docs/CustomersApi.md#customersCustomerIdGet) | **GET** /customers/{customerId} | get customer by customer id
+*WarrantyLifeApi.CustomersApi* | [**customersGet**](docs/CustomersApi.md#customersGet) | **GET** /customers | get a customer by refId
+*WarrantyLifeApi.CustomersApi* | [**customersPost**](docs/CustomersApi.md#customersPost) | **POST** /customers | Add a new customer
 *WarrantyLifeApi.ItemsApi* | [**itemsGet**](docs/ItemsApi.md#itemsGet) | **GET** /items | get an item
 *WarrantyLifeApi.ItemsApi* | [**itemsItemIdGet**](docs/ItemsApi.md#itemsItemIdGet) | **GET** /items/{itemId} | get an item
 *WarrantyLifeApi.ItemsApi* | [**itemsItemIdWarrantiesPost**](docs/ItemsApi.md#itemsItemIdWarrantiesPost) | **POST** /items/{itemId}/warranties | create warranty
